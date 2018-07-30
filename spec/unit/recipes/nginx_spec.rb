@@ -28,11 +28,11 @@ describe 'nginx::nginx' do
     end
 
     it 'should create a proxy.conf template in /etc/nginx/sites-available' do
-      expect( chef_run ).to create_template('/etc/nginx/sites-available/proxy.conf').with_variables(proxy_port: 80)
+      expect( chef_run ).to create_template('/etc/nginx/sites-available/nginx.conf').with_variables(proxy_port: 7000)
     end
 
     it 'should create a link between sites-available and sites-enabled' do
-      expect( chef_run ).to create_link('/etc/nginx/sites-enabled/proxy.conf').with_link_type(:symbolic)
+      expect( chef_run ).to create_link('/etc/nginx/sites-enabled/nginx.conf').with_link_type(:symbolic)
     end
 
     it 'should delete the symbolic link from the default file' do
